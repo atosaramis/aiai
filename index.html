@@ -1,252 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Enhanced Video Hero and Image Gallery</title>
-  <style>
-    :root {
-      --primary-color: #3498db;
-      --secondary-color: #2ecc71;
-      --text-color: #333;
-      --background-color: #f4f4f4;
-    }
-
-    body, html {
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--background-color);
-      color: var(--text-color);
-      scroll-behavior: smooth;
-    }
-
-    .hero {
-      position: relative;
-      height: 100vh;
-      overflow: hidden;
-    }
-
-    .hero video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .hero-content {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      color: white;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    }
-
-    .hero h1 {
-      font-size: 4rem;
-      margin-bottom: 1rem;
-      animation: fadeInUp 1s ease-out;
-    }
-
-    .hero p {
-      font-size: 1.5rem;
-      margin-bottom: 2rem;
-      animation: fadeInUp 1s ease-out 0.5s backwards;
-    }
-
-    .cta-button {
-      display: inline-block;
-      padding: 12px 24px;
-      background-color: var(--primary-color);
-      color: white;
-      text-decoration: none;
-      border-radius: 30px;
-      font-weight: bold;
-      transition: background-color 0.3s ease, transform 0.3s ease;
-      animation: fadeInUp 1s ease-out 1s backwards;
-    }
-
-    .cta-button:hover {
-      background-color: var(--secondary-color);
-      transform: translateY(-3px);
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      padding: 4rem 2rem;
-    }
-
-    .gallery-item {
-      position: relative;
-      overflow: hidden;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .gallery-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    }
-
-    .gallery-item img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-
-    .gallery-item:hover img {
-      transform: scale(1.1);
-    }
-
-    .gallery-item .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .gallery-item:hover .overlay {
-      opacity: 1;
-    }
-
-    .gallery-item .overlay-content {
-      color: white;
-      text-align: center;
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RafalAi - Accelerate Your Tasks with AI Agents</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      @font-face {
+        font-family: 'LucideIcons';
+        src: url(https://cdn.jsdelivr.net/npm/lucide-static@latest/font/Lucide.ttf) format('truetype');
       }
-      to {
-        opacity: 1;
-        transform: translateY(0);
+      .lucide {
+        font-family: 'LucideIcons';
+        font-size: 1.25rem; /* Adjust size as needed */
+        line-height: 1;
+        display: inline-block;
+        vertical-align: middle;
       }
-    }
-
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 3rem;
+      /* Basic smooth scroll */
+      html {
+        scroll-behavior: smooth;
       }
-      .hero p {
-        font-size: 1.2rem;
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #f8fafc; /* Light gray background */
       }
-    }
-  </style>
+      /* Custom gradient for hero */
+      .hero-gradient {
+        background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%); /* Blue gradient */
+      }
+      /* Custom gradient for buttons */
+      .btn-gradient {
+        background: linear-gradient(to right, #2563eb, #1d4ed8); /* Darker blue gradient */
+        transition: all 0.3s ease;
+      }
+      .btn-gradient:hover {
+        box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+        transform: translateY(-2px);
+      }
+      /* Card hover effect */
+      .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+    </style>
 </head>
-<body>
-  <section class="hero">
-    <video autoplay loop muted playsinline>
-      <source src="https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-heights-in-a-sunset-26070-large.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    <div class="hero-content">
-      <h1>Welcome to Our Gallery</h1>
-      <p>Explore the beauty of nature through our curated collection</p>
-      <a href="#gallery" class="cta-button">View Gallery</a>
-    </div>
-  </section>
-  <section id="gallery" class="gallery">
-    <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e" alt="Nature landscape 1" loading="lazy">
-      <div class="overlay">
-        <div class="overlay-content">
-          <h3>Mountain Vista</h3>
-          <p>Breathtaking view of mountains at sunset</p>
-        </div>
-      </div>
-    </div>
-    <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d" alt="Nature landscape 2" loading="lazy">
-      <div class="overlay">
-        <div class="overlay-content">
-          <h3>Forest Path</h3>
-          <p>A serene walk through a misty forest</p>
-        </div>
-      </div>
-    </div>
-    <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e" alt="Nature landscape 3" loading="lazy">
-      <div class="overlay">
-        <div class="overlay-content">
-          <h3>Golden Fields</h3>
-          <p>Rolling hills of golden wheat at dawn</p>
-        </div>
-      </div>
-    </div>
-    <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1490730141103-6cac27aaab94" alt="Nature landscape 4" loading="lazy">
-      <div class="overlay">
-        <div class="overlay-content">
-          <h3>Lakeside Reflection</h3>
-          <p>Calm lake mirroring the sky above</p>
-        </div>
-      </div>
-    </div>
-    <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b" alt="Nature landscape 5" loading="lazy">
-      <div class="overlay">
-        <div class="overlay-content">
-          <h3>Coastal Cliffs</h3>
-          <p>Dramatic cliffs overlooking the ocean</p>
-        </div>
-      </div>
-    </div>
-    <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e" alt="Nature landscape 6" loading="lazy">
-      <div class="overlay">
-        <div class="overlay-content">
-          <h3>Sunlit Forest</h3>
-          <p>Sunbeams filtering through dense foliage</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<body class="text-gray-800">
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const galleryItems = document.querySelectorAll('.gallery-item');
-      
-      galleryItems.forEach((item, index) => {
-        item.style.animationDelay = `${index * 0.1}s`;
-        item.classList.add('fadeInUp');
-      });
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-blue-600">
+                RafalAi
+            </div>
+            <div class="space-x-6 hidden md:flex items-center">
+                <a href="#features" class="text-gray-600 hover:text-blue-600 transition duration-300">Features</a>
+                <a href="#how-it-works" class="text-gray-600 hover:text-blue-600 transition duration-300">How It Works</a>
+                <a href="#contact" class="text-gray-600 hover:text-blue-600 transition duration-300">Contact</a>
+                <a href="#" class="bg-blue-600 text-white px-5 py-2 rounded-full hover:bg-blue-700 transition duration-300 text-sm font-medium shadow-md">Get Started</a>
+            </div>
+            <div class="md:hidden">
+                <button class="text-gray-600 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+    </header>
 
-      function isInViewport(element) {
-        const rect = element.getBoundingClientRect();
-        return (
-          rect.top >= 0 &&
-          rect.left >= 0 &&
-          rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-          rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-        );
-      }
+    <section class="hero-gradient text-white py-24 md:py-32 px-6">
+        <div class="container mx-auto text-center max-w-4xl">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 leading-tight">Execute Tasks Faster & More Accurately</h1>
+            <p class="text-lg md:text-xl mb-8 text-blue-100">Leverage RafalAi's intelligent AI agents to streamline your workflows and achieve unparalleled efficiency.</p>
+            <a href="#" class="btn-gradient text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg inline-flex items-center">
+                Get Started Free
+                <span class="lucide ml-2">&#xea19;</span>
+            </a>
+        </div>
+    </section>
 
-      function handleScroll() {
-        galleryItems.forEach(item => {
-          if (isInViewport(item)) {
-            item.style.opacity = '1';
-            item.style.transform = 'translateY(0)';
-          }
-        });
-      }
+    <section id="features" class="py-20 md:py-28 bg-white px-6">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-800">Why Choose RafalAi?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="bg-gray-50 p-8 rounded-xl shadow-lg text-center transition duration-300 feature-card border border-gray-200">
+                    <div class="flex justify-center mb-4">
+                       <span class="lucide text-blue-600 text-4xl">&#xea9f;</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-900">Blazing Speed</h3>
+                    <p class="text-gray-600">Our AI agents automate repetitive tasks, freeing up your time and accelerating project completion significantly.</p>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-xl shadow-lg text-center transition duration-300 feature-card border border-gray-200">
+                     <div class="flex justify-center mb-4">
+                       <span class="lucide text-blue-600 text-4xl">&#xe963;</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-900">Enhanced Accuracy</h3>
+                    <p class="text-gray-600">Minimize human error. RafalAi agents perform tasks with precision, ensuring reliable and consistent outcomes.</p>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-xl shadow-lg text-center transition duration-300 feature-card border border-gray-200">
+                     <div class="flex justify-center mb-4">
+                       <span class="lucide text-blue-600 text-4xl">&#xe92a;</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-900">Seamless Execution</h3>
+                    <p class="text-gray-600">Integrate RafalAi effortlessly into your existing workflows and let our agents handle the complex execution.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      window.addEventListener('scroll', handleScroll);
-      handleScroll();
-    });
-  </script>
+    <section id="how-it-works" class="py-20 md:py-28 bg-blue-50 px-6">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-800">Get Started in 3 Simple Steps</h2>
+            <div class="flex flex-col md:flex-row justify-center items-center md:items-start gap-12 md:gap-16 text-center">
+                <div class="flex flex-col items-center max-w-xs">
+                     <div class="bg-blue-600 text-white rounded-full w-16 h-16 flex items-center justify-center mb-4 shadow-md">
+                        <span class="lucide text-3xl">&#xea04;</span>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2 text-gray-900">1. Sign Up</h3>
+                    <p class="text-gray-600">Create your RafalAi account in minutes.</p>
+                </div>
+                 <div class="hidden md:block mt-8 text-blue-400">
+                    <span class="lucide text-4xl">&#xea19;</span> </div>
+                <div class="flex flex-col items-center max-w-xs">
+                    <div class="bg-blue-600 text-white rounded-full w-16 h-16 flex items-center justify-center mb-4 shadow-md">
+                        <span class="lucide text-3xl">&#xe94a;</span>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2 text-gray-900">2. Configure Agent</h3>
+                    <p class="text-gray-600">Define the task you want to automate for your AI agent.</p>
+                </div>
+                 <div class="hidden md:block mt-8 text-blue-400">
+                    <span class="lucide text-4xl">&#xea19;</span> </div>
+                <div class="flex flex-col items-center max-w-xs">
+                     <div class="bg-blue-600 text-white rounded-full w-16 h-16 flex items-center justify-center mb-4 shadow-md">
+                        <span class="lucide text-3xl">&#xe8ef;</span>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2 text-gray-900">3. Execute</h3>
+                    <p class="text-gray-600">Let RafalAi handle the task with speed and precision.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <section class="bg-blue-700 text-white py-20 px-6">
+        <div class="container mx-auto text-center max-w-3xl">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Boost Your Productivity?</h2>
+            <p class="text-lg md:text-xl mb-8 text-blue-100">Join RafalAi today and experience the future of task execution.</p>
+            <a href="#" class="bg-white text-blue-700 px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:bg-gray-100 transition duration-300 inline-flex items-center">
+                Start Your Free Trial
+                 <span class="lucide ml-2 text-yellow-400">&#xe955;</span>
+            </a>
+        </div>
+    </section>
+
+
+    <footer id="contact" class="bg-gray-800 text-gray-400 py-12 px-6">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h4 class="text-xl font-bold text-white mb-4">RafalAi</h4>
+                <p class="text-sm">AI agents for faster, more accurate task execution.</p>
+                <div class="flex space-x-4 mt-4">
+                    <a href="#" class="text-gray-400 hover:text-white"><span class="lucide">&#xe81b;</span></a> <a href="#" class="text-gray-400 hover:text-white"><span class="lucide">&#xe81a;</span></a> <a href="#" class="text-gray-400 hover:text-white"><span class="lucide">&#xe7e4;</span></a> </div>
+            </div>
+            <div>
+                <h5 class="text-lg font-semibold text-white mb-4">Quick Links</h5>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#features" class="hover:text-white transition duration-300">Features</a></li>
+                    <li><a href="#how-it-works" class="hover:text-white transition duration-300">How It Works</a></li>
+                    <li><a href="#" class="hover:text-white transition duration-300">Pricing (Example)</a></li>
+                    <li><a href="#" class="hover:text-white transition duration-300">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="text-lg font-semibold text-white mb-4">Contact Us</h5>
+                 <p class="text-sm mb-2">Woolwich Township, NJ, USA</p>
+                 <p class="text-sm mb-2">Email: <a href="mailto:info@rafalai.com" class="hover:text-white transition duration-300">info@rafalai.com</a></p>
+                 <p class="text-sm">Phone: +1 (555) 123-4567</p> </div>
+        </div>
+        <div class="container mx-auto mt-8 pt-8 border-t border-gray-700 text-center text-sm">
+            &copy; 2025 RafalAi. All rights reserved.
+        </div>
+    </footer>
+
 </body>
 </html>
