@@ -1,220 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script defer src="https://cloud.umami.is/script.js" data-website-id="8aa1625e-1a4e-490a-9f77-7bb62162bb78"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RafalAi - Accelerate Your Tasks with AI Agents</title>
+    <title>RafalAi: Unlock Innovation with the Right Tools</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-      @font-face {
-        font-family: 'LucideIcons';
-        src: url(https://cdn.jsdelivr.net/npm/lucide-static@latest/font/Lucide.ttf) format('truetype');
-      }
-      .lucide {
-        font-family: 'LucideIcons';
-        font-size: 1.25rem; /* Adjust size as needed */
-        line-height: 1;
-        display: inline-block;
-        vertical-align: middle;
-      }
-      /* Basic smooth scroll */
-      html {
-        scroll-behavior: smooth;
-      }
+      /* Apply Inter font globally */
       body {
         font-family: 'Inter', sans-serif;
-        background-color: #f8fafc; /* Light gray background */
       }
-      /* Custom gradient for hero */
-      .hero-gradient {
-        background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%); /* Blue gradient */
+      /* Simple style for list items without bullets */
+      .list-none {
+        list-style: none;
+        padding-left: 0; /* Remove default padding */
       }
-      /* Custom gradient for buttons */
-      .btn-gradient {
-        background: linear-gradient(to right, #2563eb, #1d4ed8); /* Darker blue gradient */
-        transition: all 0.3s ease;
+      /* Fade-in animation for hero section */
+      .hero svg {
+        animation: fadeIn 0.5s ease-in forwards;
       }
-      .btn-gradient:hover {
-        box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
-        transform: translateY(-2px);
+      .hero h1 {
+        animation: fadeIn 0.5s ease-in forwards;
+        animation-delay: 0.2s;
       }
-      /* Card hover effect */
-      .feature-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      .hero p {
+        animation: fadeIn 0.5s ease-in forwards;
+        animation-delay: 0.4s;
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
       }
     </style>
 </head>
-<body class="text-gray-800">
+<body class="antialiased text-gray-800 bg-gray-50 min-h-screen">
 
-    <header class="bg-white shadow-sm sticky top-0 z-50">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold text-blue-600">
-                RafalAi
-            </div>
-            <div class="space-x-6 hidden md:flex items-center">
-                <a href="#features" class="text-gray-600 hover:text-blue-600 transition duration-300">Features</a>
-                <a href="#how-it-works" class="text-gray-600 hover:text-blue-600 transition duration-300">How It Works</a>
-                <a href="#contact" class="text-gray-600 hover:text-blue-600 transition duration-300">Contact</a>
-                <a href="#" class="bg-blue-600 text-white px-5 py-2 rounded-full hover:bg-blue-700 transition duration-300 text-sm font-medium shadow-md">Get Started</a>
-            </div>
-            <div class="md:hidden">
-                <button class="text-gray-600 focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                </button>
-            </div>
-        </nav>
-    </header>
-
-    <section class="hero-gradient text-white py-24 md:py-32 px-6">
-        <div class="container mx-auto text-center max-w-4xl">
-            <h1 class="text-4xl md:text-6xl font-bold mb-4 leading-tight">Execute Tasks Faster & More Accurately</h1>
-            <p class="text-lg md:text-xl mb-8 text-blue-100">Leverage RafalAi's intelligent AI agents to streamline your workflows and achieve unparalleled efficiency.</p>
-            <a href="#" class="btn-gradient text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg inline-flex items-center">
-                Get Started Free
-                <span class="lucide ml-2">&#xea19;</span>
-            </a>
+    <section class="hero bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-20 md:py-32 px-4 sm:px-6 lg:px-8 text-center rounded-b-lg shadow-lg">
+        <div class="max-w-4xl mx-auto">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto h-16 w-16 text-indigo-200 mb-4 lucide lucide-brain-circuit"><path d="M12 5a3 3 0 1 0-5.997.142"/><path d="M18 5a3 3 0 1 0-5.997.142"/><path d="M12 12a3 3 0 1 0-5.997.142"/><path d="M18 12a3 3 0 1 0-5.997.142"/><path d="M12 19a3 3 0 1 0-5.997.142"/><path d="M18 19a3 3 0 1 0-5.997.142"/><path d="M12 5a3 3 0 1 0 5.997.142"/><path d="M18 5a3 3 0 1 0 5.997.142"/><path d="M12 12a3 3 0 1 0 5.997.142"/><path d="M18 12a3 3 0 1 0 5.997.142"/><path d="M12 19a3 3 0 1 0 5.997.142"/><path d="M18 19a3 3 0 1 0 5.997.142"/><path d="m14.5 6.5 1 1"/><path d="m9.5 6.5-1 1"/><path d="m14.5 13.5 1 1"/><path d="m9.5 13.5-1 1"/><path d="m14.5 20.5 1 1"/><path d="m9.5 20.5-1 1"/><path d="M12 8v1"/><path d="M18 8v1"/><path d="M12 15v1"/><path d="M18 15v1"/></svg>
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 leading-tight">
+                RafalAi: Unlock Innovation with the Right Tools
+            </h1>
+            <p class="text-lg sm:text-xl md:text-2xl text-indigo-100 max-w-2xl mx-auto">
+                Learn, Automate, and Innovate—On Your Terms
+            </p>
         </div>
     </section>
 
-    <section id="features" class="py-20 md:py-28 bg-white px-6">
-        <div class="container mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-800">Why Choose RafalAi?</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <div class="bg-gray-50 p-8 rounded-xl shadow-lg text-center transition duration-300 feature-card border border-gray-200">
-                    <div class="flex justify-center mb-4">
-                       <span class="lucide text-blue-600 text-4xl">&#xea9f;</span>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3 text-gray-900">Blazing Speed</h3>
-                    <p class="text-gray-600">Our AI agents automate repetitive tasks, freeing up your time and accelerating project completion significantly.</p>
-                </div>
-                <div class="bg-gray-50 p-8 rounded-xl shadow-lg text-center transition duration-300 feature-card border border-gray-200">
-                     <div class="flex justify-center mb-4">
-                       <span class="lucide text-blue-600 text-4xl">&#xe963;</span>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3 text-gray-900">Enhanced Accuracy</h3>
-                    <p class="text-gray-600">Minimize human error. RafalAi agents perform tasks with precision, ensuring reliable and consistent outcomes.</p>
-                </div>
-                <div class="bg-gray-50 p-8 rounded-xl shadow-lg text-center transition duration-300 feature-card border border-gray-200">
-                     <div class="flex justify-center mb-4">
-                       <span class="lucide text-blue-600 text-4xl">&#xe92a;</span>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3 text-gray-900">Seamless Execution</h3>
-                    <p class="text-gray-600">Integrate RafalAi effortlessly into your existing workflows and let our agents handle the complex execution.</p>
-                </div>
-            </div>
+    <section class="py-16 md:py-24 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center">
+            <p class="text-lg md:text-xl text-gray-600 leading-relaxed">
+                RafalAi isn’t about throwing complex tech at you—it’s about giving you the tools to work smarter. As someone with a background in science and marketing research, I’ve seen how the right solutions can transform ideas into action. Whether you’re in biotech, marketing, or anywhere else, RafalAi helps you harness AI to automate the grind, learn what you need, and focus on what matters—without needing to be a tech expert.
+            </p>
         </div>
     </section>
 
-    <section id="how-it-works" class="py-20 md:py-28 bg-blue-50 px-6">
-        <div class="container mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-800">Get Started in 3 Simple Steps</h2>
-            <div class="flex flex-col md:flex-row justify-center items-center md:items-start gap-12 md:gap-16 text-center">
-                <div class="flex flex-col items-center max-w-xs">
-                     <div class="bg-blue-600 text-white rounded-full w-16 h-16 flex items-center justify-center mb-4 shadow-md">
-                        <span class="lucide text-3xl">&#xea04;</span>
-                    </div>
-                    <h3 class="text-lg font-semibold mb-2 text-gray-900">1. Sign Up</h3>
-                    <p class="text-gray-600">Create your RafalAi account in minutes.</p>
-                </div>
-                 <div class="hidden md:block mt-8 text-blue-400">
-                    <span class="lucide text-4xl">&#xea19;</span> </div>
-                <div class="flex flex-col items-center max-w-xs">
-                    <div class="bg-blue-600 text-white rounded-full w-16 h-16 flex items-center justify-center mb-4 shadow-md">
-                        <span class="lucide text-3xl">&#xe94a;</span>
-                    </div>
-                    <h3 class="text-lg font-semibold mb-2 text-gray-900">2. Configure Agent</h3>
-                    <p class="text-gray-600">Define the task you want to automate for your AI agent.</p>
-                </div>
-                 <div class="hidden md:block mt-8 text-blue-400">
-                    <span class="lucide text-4xl">&#xea19;</span> </div>
-                <div class="flex flex-col items-center max-w-xs">
-                     <div class="bg-blue-600 text-white rounded-full w-16 h-16 flex items-center justify-center mb-4 shadow-md">
-                        <span class="lucide text-3xl">&#xe8ef;</span>
-                    </div>
-                    <h3 class="text-lg font-semibold mb-2 text-gray-900">3. Execute</h3>
-                    <p class="text-gray-600">Let RafalAi handle the task with speed and precision.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <section class="bg-gray-100 py-16 md:py-24 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
 
-     <section class="bg-blue-700 text-white py-20 px-6">
-        <div class="container mx-auto text-center max-w-3xl">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Boost Your Productivity?</h2>
-            <p class="text-lg md:text-xl mb-8 text-blue-100">Join RafalAi today and experience the future of task execution.</p>
-            <a href="#" class="bg-white text-blue-700 px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:bg-gray-100 transition duration-300 inline-flex items-center">
-                Start Your Free Trial
-                 <span class="lucide ml-2 text-yellow-400">&#xe955;</span>
-            </a>
-        </div>
-    </section>
-
-
-    <footer id="contact" class="bg-gray-800 text-gray-400 py-12 px-6">
-        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
-                <h4 class="text-xl font-bold text-white mb-4">RafalAi</h4>
-                <p class="text-sm">AI agents for faster, more accurate task execution.</p>
-                <div class="flex space-x-4 mt-4">
-                    <a href="#" class="text-gray-400 hover:text-white"><span class="lucide">&#xe81b;</span></a> <a href="#" class="text-gray-400 hover:text-white"><span class="lucide">&#xe81a;</span></a> <a href="#" class="text-gray-400 hover:text-white"><span class="lucide">&#xe7e4;</span></a> </div>
-            </div>
-            <div>
-                <h5 class="text-lg font-semibold text-white mb-4">Quick Links</h5>
-                <ul class="space-y-2 text-sm">
-                    <li><a href="#features" class="hover:text-white transition duration-300">Features</a></li>
-                    <li><a href="#how-it-works" class="hover:text-white transition duration-300">How It Works</a></li>
-                    <li><a href="#" class="hover:text-white transition duration-300">Pricing (Example)</a></li>
-                    <li><a href="#" class="hover:text-white transition duration-300">Privacy Policy</a></li>
+            <div class="bg-white text-center p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto h-16 w-16 text-blue-500 mb-4 lucide lucide-lightbulb"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
+                <h2 class="text-2xl font-semibold mb-3 text-gray-900">Effortless Innovation with AI</h2>
+                <ul class="text-left text-gray-600 space-y-2 list-none">
+                    <li class="flex items-start">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-1 lucide lucide-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+                        <span>Turn ideas into reality: Simplify complex tasks with tools that fit your goals.</span>
+                    </li>
+                    <li class="flex items-start">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-1 lucide lucide-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+                        <span>Works for any field: From biotech breakthroughs to creative projects, it’s all about flexibility.</span>
+                    </li>
+                    <li class="flex items-start">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-1 lucide lucide-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+                        <span>Focus on your vision: Spend less time on busywork and more on what inspires you.</span>
+                    </li>
                 </ul>
             </div>
-            <div>
-                <h5 class="text-lg font-semibold text-white mb-4">Contact Us</h5>
-                 <p class="text-sm mb-4">Have questions? Send us a message!</p>
-                 <form action="https://formspree.io/f/mvgkwabk" method="POST">
-                    <div class="mb-4">
-                        <label class="block text-sm font-medium mb-1" for="email">
-                            Your email:
-                        </label>
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            required
-                            class="w-full p-2 border border-gray-600 rounded-md bg-gray-700 text-gray-200 focus:ring-1 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-500"
-                            placeholder="you@example.com"
-                        >
-                    </div>
-                    <div class="mb-4">
-                        <label class="block text-sm font-medium mb-1" for="message">
-                            Your message:
-                        </label>
-                        <textarea
-                            id="message"
-                            name="message"
-                            required
-                            rows="4"
-                            class="w-full p-2 border border-gray-600 rounded-md bg-gray-700 text-gray-200 focus:ring-1 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-500"
-                            placeholder="Enter your message here..."
-                        ></textarea>
-                    </div>
-                    <button
-                        type="submit"
-                        class="w-full bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300 font-medium"
-                    >
-                        Send Message
-                    </button>
-                 </form>
-                 </div>
+
+            <div class="bg-white text-center p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto h-16 w-16 text-yellow-500 mb-4 lucide lucide-zap"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                <h2 class="text-2xl font-semibold mb-3 text-gray-900">Automate the Mundane, Focus on What Matters</h2>
+                 <ul class="text-left text-gray-600 space-y-2 list-none">
+                    <li class="flex items-start">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-1 lucide lucide-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+                        <span>Save time instantly: Let AI tackle repetitive tasks like organizing data or streamlining workflows.</span>
+                    </li>
+                    <li class="flex items-start">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-1 lucide lucide-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+                        <span>Efficiency that scales: Get tools that keep up with your ambitions.</span>
+                    </li>
+                    <li class="flex items-start">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-1 lucide lucide-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+                        <span>Free up your energy: Concentrate on the big wins, not the small stuff.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bg-white text-center p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto h-16 w-16 text-purple-500 mb-4 lucide lucide-graduation-cap"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.084a1 1 0 0 0 0 1.838l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>
+                <h2 class="text-2xl font-semibold mb-3 text-gray-900">Learn to Harness AI for Your Goals</h2>
+                 <ul class="text-left text-gray-600 space-y-2 list-none">
+                    <li class="flex items-start">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-1 lucide lucide-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+                        <span>Master the essentials: Pick up practical AI skills with clear, no-nonsense resources.</span>
+                    </li>
+                    <li class="flex items-start">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 21" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-1 lucide lucide-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+                        <span>Find the right tools: Discover how to choose what works best for your projects.</span>
+                    </li>
+                    <li class="flex items-start">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-1 lucide lucide-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+                        <span>Stay in control: Build confidence to innovate at your own pace.</span>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="container mx-auto mt-8 pt-8 border-t border-gray-700 text-center text-sm">
-            &copy; 2025 RafalAi. All rights reserved.
+    </section>
+
+    <section class="bg-gray-50 py-16 md:py-24 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto h-16 w-16 text-red-500 mb-4 lucide lucide-target"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            <h2 class="text-3xl font-semibold mb-6 text-gray-900">Why RafalAi? Innovation Made Simple</h2>
+            <p class="text-lg text-gray-600 leading-relaxed mb-8">
+                I’ve been there—decoding markets, working with biotech clients—and I know innovation shouldn’t feel out of reach. RafalAi meets you where you are, offering AI tools (yes, even coding ones if you want them) in a way that’s easy to grasp and use. It’s about teaching you what you need to succeed, not overwhelming you with specifics.
+            </p>
         </div>
-    </footer>
+    </section>
+
+     <section class="bg-blue-600 py-16 md:py-20 px-4 sm:px-6 lg:px-8 text-center rounded-t-lg mt-10">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-3xl font-semibold text-white mb-4">Ready to simplify your work, learn the right tools, and make an impact?</h2>
+            <p class="text-indigo-100 text-lg mb-8">Join RafalAi now and start your innovation journey today.</p>
+            <button
+                type="button"
+                class="bg-white text-blue-600 hover:bg-gray-100 px-8 py-3 text-lg font-semibold rounded-lg shadow-md transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white transform hover:scale-105"
+                onclick="alert('CTA Button Clicked! Implement navigation or action here.')"
+            >
+                Start Your Innovation Journey Today
+            </button>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-gray-400 py-6 px-4 sm:px-6 lg:px-8 text-center text-sm">
+        <p>© <span id="current-year"></span> RafalAi. All rights reserved.</p>
+        </footer>
+
+    <script>
+        // Simple script to update the year in the footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
 
 </body>
 </html>
