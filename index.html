@@ -117,7 +117,7 @@
         </div>
     </section>
 
-    <!-- CTA Section with Formspree Integration -->
+    <!-- CTA Section -->
     <section class="bg-blue-600 py-16 md:py-20 px-4 sm:px-6 lg:px-8 text-center rounded-t-lg mt-10">
         <div class="max-w-3xl mx-auto">
             <h2 class="text-3xl font-semibold text-white mb-4">Ready to simplify your work, learn the right tools, and make an impact?</h2>
@@ -125,7 +125,7 @@
             <button
                 type="button"
                 class="bg-white text-blue-600 hover:bg-gray-100 px-8 py-3 text-lg font-semibold rounded-lg shadow-md transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
-                onclick="formbutton('open')"
+                onclick="document.getElementById('form-modal').classList.remove('hidden');"
             >
                 Start Your Innovation Journey Today
             </button>
@@ -137,45 +137,30 @@
         <p>© <span id="current-year"></span> RafalAi. All rights reserved.</p>
     </footer>
 
-    <!-- Existing Year Update Script -->
-    <script>
-        // Simple script to update the year in the footer
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-    </script>
+    <!-- Modal for Formspree Form -->
+    <div id="form-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-black opacity-50" onclick="document.getElementById('form-modal').classList.add('hidden');"></div>
+        <!-- Modal Content -->
+        <div class="relative bg-white p-6 rounded-lg shadow-lg w-96">
+            <form action="https://formspree.io/f/xdkgoqrb" method="POST" class="space-y-4">
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700">Your email:</label>
+                    <input type="email" name="email" id="email" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                </div>
+                <div>
+                    <label for="message" class="block text-sm font-medium text-gray-700">Your message:</label>
+                    <textarea name="message" id="message" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700">Send</button>
+            </form>
+            <button onclick="document.getElementById('form-modal').classList.add('hidden');" class="mt-4 w-full bg-gray-300 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-400">Close</button>
+        </div>
+    </div>
 
-    <!-- Formspree Script and Configuration -->
-    <script src="https://formspree.io/js/formbutton-v1.min.js" defer></script>
+    <!-- Script to Update Year in Footer -->
     <script>
-        window.formbutton = window.formbutton || function() { (formbutton.q = formbutton.q || []).push(arguments); };
-        formbutton("create", {
-            action: "https://formspree.io/f/xdkgoqrb",
-            title: "How can we help?",
-            fields: [
-                { 
-                    type: "email", 
-                    label: "Email:", 
-                    name: "email",
-                    required: true,
-                    placeholder: "your@email.com"
-                },
-                {
-                    type: "textarea",
-                    label: "Message:",
-                    name: "message",
-                    placeholder: "What's on your mind?"
-                },
-                { type: "submit" }
-            ],
-            styles: {
-                title: {
-                    backgroundColor: "gray"
-                },
-                button: {
-                    backgroundColor: "gray"
-                }
-            },
-            button: false // Disable default floating button
-        });
+        document.getElementById('current-year').textContent = new Date().getFullYear();
     </script>
 
 </body>
