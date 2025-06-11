@@ -156,7 +156,7 @@
                 Learn, Automate, and Innovate—<em class="font-semibold text-yellow-300">On Your Terms</em>
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <button class="btn-primary" onclick="document.getElementById('form-modal').classList.remove('hidden');">
+                <button class="btn-primary" onclick="showModal()">
                     Start Your Journey
                 </button>
                 <button class="btn-secondary">
@@ -351,7 +351,7 @@
             <p class="text-lg md:text-xl text-blue-100 mb-10 font-normal leading-7">
                 Join RafalAi now and start your innovation journey today.
             </p>
-            <button class="btn-primary animate-pulse-glow" onclick="document.getElementById('form-modal').classList.remove('hidden');">
+            <button class="btn-primary animate-pulse-glow" onclick="showModal()">
                 <span class="flex items-center justify-center space-x-2">
                     <span>Start Your Innovation Journey</span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transform group-hover:translate-x-1 transition-transform duration-300">
@@ -364,9 +364,9 @@
     </section>
 
     <!-- Modal -->
-    <div id="form-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center hidden z-50">
-        <div class="bg-white rounded-2xl p-8 max-w-md w-full relative">
-            <button class="absolute top-4 right-4 text-gray-600 hover:text-gray-900" onclick="document.getElementById('form-modal').classList.add('hidden');">
+    <div id="form-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center hidden z-50 transition-opacity duration-300">
+        <div class="bg-white rounded-2xl p-8 max-w-md w-full relative transform scale-95 transition-transform duration-300">
+            <button class="absolute top-4 right-4 text-gray-600 hover:text-gray-900" onclick="hideModal()">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M18 6L6 18"/>
                     <path d="M6 6l12 12"/>
@@ -428,5 +428,30 @@
         </div>
     </footer>
 
+    <!-- JavaScript for Modal -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('form-modal');
+            if (!modal) {
+                console.error('Modal element with ID "form-modal" not found.');
+                return;
+            }
+
+            window.showModal = () => {
+                modal.classList.remove('hidden');
+                modal.querySelector('div').classList.remove('scale-95');
+                modal.classList.add('opacity-100');
+            };
+
+            window.hideModal = () => {
+                modal.classList.add('opacity-0');
+                modal.querySelector('div').classList.add('scale-95');
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    modal.classList.remove('opacity-0');
+                }, 300); // Match transition duration
+            };
+        });
+    </script>
 </body>
 </html>
