@@ -78,6 +78,7 @@
         }
         .feature-card {
             @apply bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl transition-all duration-300;
+            opacity: 1; /* Ensure cards are visible */
         }
         .feature-card:hover {
             @apply transform -translate-y-2 scale-102 shadow-2xl;
@@ -95,9 +96,10 @@
             0%, 100% { background-position: 200% 0; }
             50% { background-position: -200% 0; }
         }
+        /* Fixed stagger animation - starts visible and adds entrance effect */
         .stagger-animation > * {
-            opacity: 0;
-            animation: slide-up 0.8s ease-out forwards;
+            opacity: 1; /* Start visible */
+            animation: slide-up 0.8s ease-out;
         }
         .stagger-animation > *:nth-child(1) { animation-delay: 0.2s; }
         .stagger-animation > *:nth-child(2) { animation-delay: 0.4s; }
@@ -401,57 +403,4 @@
                 <ul class="space-y-2">
                     <li><a href="#" class="link-underline text-sm hover:text-gray-200">Home</a></li>
                     <li><a href="#" class="link-underline text-sm hover:text-gray-200">Features</a></li>
-                    <li><a href="#" class="link-underline text-sm hover:text-gray-200">Contact</a></li>
-                    <li><a href="#" class="link-underline text-sm hover:text-gray-200">Privacy Policy</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="text-base font-semibold text-gray-200 mb-4">Connect</h4>
-                <div class="flex space-x-4">
-                    <a href="#" class="text-gray-400 hover:text-gray-200">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-gray-200">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                            <rect x="2" y="9" width="4" height="12"/>
-                            <circle cx="4" cy="4" r="2"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="mt-8 border-t border-gray-800 pt-6 text-center text-sm">
-            <p>© 2025 RafalAi. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <!-- JavaScript for Modal -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const modal = document.getElementById('form-modal');
-            if (!modal) {
-                console.error('Modal element with ID "form-modal" not found.');
-                return;
-            }
-
-            window.showModal = () => {
-                modal.classList.remove('hidden');
-                modal.querySelector('div').classList.remove('scale-95');
-                modal.classList.add('opacity-100');
-            };
-
-            window.hideModal = () => {
-                modal.classList.add('opacity-0');
-                modal.querySelector('div').classList.add('scale-95');
-                setTimeout(() => {
-                    modal.classList.add('hidden');
-                    modal.classList.remove('opacity-0');
-                }, 300); // Match transition duration
-            };
-        });
-    </script>
-</body>
-</html>
+                    <li><a href="#" class="link-underline text-sm hover:text-gray-
