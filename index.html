@@ -1,431 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RafalAi: Turn Complex Tasks Into Simple Wins</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="./dist/output.css" rel="stylesheet">
-    <script
-        src="https://cdn.databuddy.cc/databuddy.js"
-        data-client-id="feNAZ5ewTdw5BctS9Vp7u"
-        data-track-hash-changes="true"
-        data-track-attributes="true"
-        data-track-outgoing-links="true"
-        data-track-interactions="true"
-        data-track-engagement="true"
-        data-track-scroll-depth="true"
-        data-track-exit-intent="true"
-        data-track-bounce-rate="true"
-        data-track-web-vitals="true"
-        data-track-errors="true"
-        data-enable-batching="true"
-        crossorigin="anonymous"
-        async
-    ></script>
-    <script src="https://analytics.ahrefs.com/analytics.js" data-key="J9goCIQ2Irj+PCfpQR0wTw" async></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RafalAI — An AI Assistant That Actually Works</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes pulse-subtle {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.85; }
+    }
+    .animate-pulse-subtle {
+      animation: pulse-subtle 2s ease-in-out infinite;
+    }
+  </style>
 </head>
-<body class="antialiased text-gray-800 bg-gradient-to-br from-slate-50 via-white to-slate-100 min-h-screen">
+<body class="bg-black">
+  <div class="relative min-h-screen bg-black overflow-hidden">
+    
+    <!-- Background Video -->
+    <video
+      autoplay
+      loop
+      muted
+      playsinline
+      class="absolute inset-0 w-full h-full object-cover scale-150 object-left-top origin-top-left"
+    >
+      <source
+        src="https://feedmenews.s3.us-east-1.amazonaws.com/grok-video-4056c621-e2e2-4589-ac1f-883411f4b5ca.mp4"
+        type="video/mp4"
+      />
+    </video>
 
-    <!-- Subtle animated backgrounds -->
-    <div class="fixed inset-0 overflow-hidden pointer-events-none opacity-20">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
-    </div>
+    <!-- Dark Gradient Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/60 to-black/80"></div>
 
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 bg-gradient-to-br from-violet-500 to-cyan-500 rounded-2xl flex items-center justify-center animate-glow">
-                        <span class="text-lg font-bold text-white font-space">R</span>
-                    </div>
-                    <span class="text-xl font-bold text-gray-900 font-space" id="nav-title">RafalAi</span>
-                </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="nav-link text-gray-700 hover:text-violet-600 transition-all duration-300 relative">
-                        Home
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-violet-600 transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                    <a href="#features" class="nav-link text-gray-700 hover:text-violet-600 transition-all duration-300 relative">
-                        Features
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-violet-600 transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                    <a href="#why" class="nav-link text-gray-700 hover:text-violet-600 transition-all duration-300 relative">
-                        Why RafalAi
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-violet-600 transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                    <a href="#contact" class="nav-link text-gray-700 hover:text-violet-600 transition-all duration-300 relative">
-                        Contact
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-violet-600 transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                </div>
-            </div>
+    <!-- Navbar -->
+    <nav class="fixed top-0 inset-x-0 z-50 bg-black/40 backdrop-blur-md border-b border-white/5">
+      <div class="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between h-20">
+        
+        <!-- Logo -->
+        <div class="font-bold text-3xl tracking-tight text-white">
+          R
         </div>
+
+        <!-- Center Links -->
+        <div class="hidden md:flex items-center space-x-10">
+          <a href="#features" class="flex items-center gap-1 text-white/90 hover:text-white transition">
+            Features
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </a>
+          <a href="#what-it-does" class="text-white/90 hover:text-white transition">
+            What It Does
+          </a>
+          <a href="#difference" class="text-white/90 hover:text-white transition">
+            The Difference
+          </a>
+        </div>
+
+        <!-- Right -->
+        <div class="flex items-center space-x-6">
+          <a href="#signin" class="hidden sm:block text-white/80 hover:text-white transition">
+            Sign in
+          </a>
+          <a href="#get-access" class="bg-white text-black font-semibold px-7 py-3 rounded-full hover:bg-gray-100 transition-transform hover:scale-105 shadow-xl">
+            Get Access
+          </a>
+        </div>
+      </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="relative min-h-screen flex items-center justify-center text-white px-4 sm:px-6 lg:px-8 text-center overflow-hidden hero-gradient">
-        <div class="relative z-10 max-w-6xl mx-auto">
-            <div class="mb-8">
-                <div class="mx-auto w-20 h-20 glass-effect rounded-3xl flex items-center justify-center border border-white/30 shadow-2xl animate-pulse-glow">
-                    <span class="text-3xl font-bold text-white font-space">R</span>
-                </div>
-            </div>
-            
-            <div class="space-y-8 mb-16">
-                <h1 class="text-5xl sm:text-6xl md:text-7xl font-bold leading-none tracking-tight font-space text-white animate-text-reveal drop-shadow-2xl">
-                    RafalAi
-                </h1>
-                <div class="overflow-hidden">
-                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-medium animate-text-reveal text-white drop-shadow-lg" style="animation-delay: 0.3s">
-                        Turn Complex Tasks Into <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-purple-400 to-cyan-400 font-bold">Simple Wins</span>
-                    </h2>
-                </div>
-                <div class="overflow-hidden">
-                    <p class="text-lg sm:text-xl max-w-4xl mx-auto leading-8 text-gray-200 animate-text-reveal drop-shadow-md" style="animation-delay: 0.6s">
-                        Save 10+ hours weekly. Automate data analysis in 15 minutes. <em class="font-semibold text-violet-300">No coding required.</em>
-                    </p>
-                </div>
-            </div>
-            
-            <!-- Enhanced Metrics -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 max-w-3xl mx-auto">
-                <div class="metric-card group">
-                    <div class="text-2xl md:text-3xl font-bold text-violet-600 mb-2 font-space group-hover:scale-110 transition-transform duration-300">15min</div>
-                    <div class="text-sm md:text-base text-high-contrast font-medium">Setup Time</div>
-                </div>
-                <div class="metric-card group">
-                    <div class="text-2xl md:text-3xl font-bold text-cyan-600 mb-2 font-space group-hover:scale-110 transition-transform duration-300">10+ hrs</div>
-                    <div class="text-sm md:text-base text-high-contrast font-medium">Weekly Savings</div>
-                </div>
-                <div class="metric-card group">
-                    <div class="text-2xl md:text-3xl font-bold text-emerald-600 mb-2 font-space group-hover:scale-110 transition-transform duration-300">Zero</div>
-                    <div class="text-sm md:text-base text-high-contrast font-medium">Coding Skills</div>
-                </div>
-            </div>
-
-            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <button class="btn-primary group" onclick="showModal()">
-                    <span class="relative z-10">Start Your Journey</span>
-                </button>
-                <button class="btn-secondary group" onclick="scrollToSection('description')">
-                    <span class="relative z-10">Learn More</span>
-                </button>
-            </div>
-        </div>
+    <!-- Hero Content -->
+    <div class="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 text-center">
+      <div class="max-w-5xl mx-auto">
         
-        <!-- Enhanced Scroll Indicator -->
-        <div class="scroll-indicator">
-            <div class="scroll-wheel"></div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="animate-bounce-subtle opacity-80">
-                <path d="M7 13l3 3 3-3"/>
-                <path d="M7 6l3 3 3-3"/>
-            </svg>
+        <!-- Top Tag/Pill -->
+        <div class="inline-block backdrop-blur-2xl bg-white/5 border border-white/15 px-6 py-3 rounded-full text-sm md:text-base font-medium tracking-wider uppercase text-white/90 mb-10">
+          An AI Assistant That Actually Works
         </div>
-    </section>
 
-    <!-- Description Section -->
-    <section id="description" class="py-20 md:py-32 px-4 sm:px-6 lg:px-8 relative">
-        <div class="max-w-4xl mx-auto text-center">
-            <div class="glass-effect rounded-3xl p-10 md:p-16 shadow-2xl border border-white/20">
-                <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold mb-10 text-gray-900 font-space leading-tight">
-                    Complex Tasks Shouldn't <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-cyan-600">Slow You Down</span>
-                </h2>
-                <p class="text-lg md:text-xl lg:text-2xl text-gray-700 leading-relaxed font-medium max-w-3xl mx-auto">
-                    RafalAi transforms your biggest time drains into automated wins. As a <span class="font-semibold text-violet-600">scientist and AI technology leader with 25+ years of experience</span> at Fortune 500 pharmaceutical companies, NIH collaborations, and cutting-edge biotech, I've seen brilliant teams waste weeks on tasks that AI can handle in minutes. Whether you're analyzing research data, processing clinical findings, or streamlining complex workflows, RafalAi gives you <span class="font-semibold text-cyan-600">scientist-grade tools that actually work</span>.
-                </p>
-            </div>
-        </div>
-    </section>
+        <!-- Main Headline -->
+        <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extrabold tracking-tight leading-none text-white">
+          Not a Chatbot.<br/>
+          Not a Prompt Box.
+        </h1>
 
-    <!-- Features Section -->
-    <section id="features" class="py-20 md:py-32 px-4 sm:px-6 lg:px-8 relative">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-900 mb-8 font-space leading-tight">
-                    Three Ways to <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-cyan-600 to-emerald-600">Win Back Your Time</span>
-                </h2>
-                <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-                    Proven methods that deliver results in your first week
-                </p>
+        <!-- Sub-headline -->
+        <p class="text-2xl md:text-4xl lg:text-5xl font-bold text-white/95 mt-6">
+          An assistant that gets things done.
+        </p>
+
+        <!-- Key Differentiator Block -->
+        <div class="max-w-3xl mx-auto mt-10">
+          <div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10 text-white/90 font-medium">
+            
+            <!-- Connected -->
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
+              </svg>
+              <span><strong>Connected</strong> — Real data. Real APIs.</span>
             </div>
             
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-12 stagger-animation max-w-7xl mx-auto" id="features-grid">
-                <!-- Feature 1 -->
-                <div class="feature-card group">
-                    <div class="flex flex-col items-center mb-10">
-                        <div class="w-24 h-24 bg-gradient-to-br from-violet-500 to-purple-600 rounded-3xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 animate-glow">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/>
-                                <path d="M9 18h6"/>
-                                <path d="M10 22h4"/>
-                            </svg>
-                        </div>
-                        <h3 class="text-xl md:text-2xl font-bold text-gray-900 font-space leading-tight">Instant Problem Solving</h3>
-                    </div>
-                    <div class="space-y-8 flex-1 w-full">
-                        <div class="flex items-start space-x-5">
-                            <div class="flex-shrink-0 w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center mt-1 group-hover:scale-110 transition-transform duration-300">
-                                <svg width="18" height="18" viewBox="0 0 12 12" fill="white">
-                                    <path d="M10 3L4.5 8.5L2 6" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                            <p class="text-gray-700 text-lg leading-relaxed text-left"><strong class="text-violet-600 font-semibold">15-minute setup:</strong> Upload your data, get automated insights immediately</p>
-                        </div>
-                        <div class="flex items-start space-x-5">
-                            <div class="flex-shrink-0 w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center mt-1 group-hover:scale-110 transition-transform duration-300">
-                                <svg width="18" height="18" viewBox="0 0 12 12" fill="white">
-                                    <path d="M10 3L4.5 8.5L2 6" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                            <p class="text-gray-700 text-lg leading-relaxed text-left"><strong class="text-cyan-600 font-semibold">Any research domain:</strong> Clinical trials, lab results, biotech data, pharmaceutical workflows—it adapts</p>
-                        </div>
-                        <div class="flex items-start space-x-5">
-                            <div class="flex-shrink-0 w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center mt-1 group-hover:scale-110 transition-transform duration-300">
-                                <svg width="14" height="14" viewBox="0 0 12 12" fill="white">
-                                    <path d="M10 3L4.5 8.5L2 6" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                            <p class="text-gray-700 text-lg leading-relaxed text-left"><strong class="text-emerald-600 font-semibold">Focus on discovery:</strong> Skip the data processing, jump to breakthrough insights</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Feature 2 -->
-                <div class="feature-card group">
-                    <div class="flex flex-col items-center mb-10">
-                        <div class="w-24 h-24 bg-gradient-to-br from-amber-500 to-orange-500 rounded-3xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 animate-glow">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-                            </svg>
-                        </div>
-                        <h3 class="text-xl md:text-2xl font-bold text-gray-900 font-space leading-tight">Automate Your Biggest Time Drains</h3>
-                    </div>
-                    <div class="space-y-8 flex-1 w-full">
-                        <div class="flex items-start space-x-5">
-                            <div class="flex-shrink-0 w-7 h-7 bg-emerald-500 rounded-full flex items-center justify-center mt-1 group-hover:scale-110 transition-transform duration-300">
-                                <svg width="16" height="16" viewBox="0 0 12 12" fill="white">
-                                    <path d="M10 3L4.5 8.5L2 6" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                            <p class="text-gray-700 text-base md:text-lg leading-relaxed"><strong class="text-violet-600 font-semibold">Research data processing:</strong> Turn complex datasets into insights in minutes, not days</p>
-                        </div>
-                        <div class="flex items-start space-x-5">
-                            <div class="flex-shrink-0 w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center mt-1 group-hover:scale-110 transition-transform duration-300">
-                                <svg width="14" height="14" viewBox="0 0 12 12" fill="white">
-                                    <path d="M10 3L4.5 8.5L2 6" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                            <p class="text-gray-700 text-base md:text-lg leading-relaxed"><strong class="text-cyan-600 font-semibold">Research summaries:</strong> Publication-ready analysis generated automatically</p>
-                        </div>
-                        <div class="flex items-start space-x-5">
-                            <div class="flex-shrink-0 w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center mt-1 group-hover:scale-110 transition-transform duration-300">
-                                <svg width="14" height="14" viewBox="0 0 12 12" fill="white">
-                                    <path d="M10 3L4.5 8.5L2 6" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                            <p class="text-gray-700 text-base md:text-lg leading-relaxed"><strong class="text-emerald-600 font-semibold">Scale effortlessly:</strong> Handle 10x more data without extra effort</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Feature 3 -->
-                <div class="feature-card group">
-                    <div class="flex flex-col items-center mb-10">
-                        <div class="w-24 h-24 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-3xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 animate-glow">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.084a1 1 0 0 0 0 1.838l8.57 3.908a2 2 0 0 0 1.66 0z"/>
-                                <path d="M22 10v6"/>
-                                <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/>
-                            </svg>
-                        </div>
-                        <h3 class="text-xl md:text-2xl font-bold text-gray-900 font-space leading-tight">Master AI Without the Learning Curve</h3>
-                    </div>
-                    <div class="space-y-8 flex-1 w-full">
-                        <div class="flex items-start space-x-5">
-                            <div class="flex-shrink-0 w-7 h-7 bg-emerald-500 rounded-full flex items-center justify-center mt-1 group-hover:scale-110 transition-transform duration-300">
-                                <svg width="16" height="16" viewBox="0 0 12 12" fill="white">
-                                    <path d="M10 3L4.5 8.5L2 6" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                            <p class="text-gray-700 text-base md:text-lg leading-relaxed"><strong class="text-violet-600 font-semibold">Skip the learning curve:</strong> Pre-built workflows for common research tasks</p>
-                        </div>
-                        <div class="flex items-start space-x-5">
-                            <div class="flex-shrink-0 w-7 h-7 bg-emerald-500 rounded-full flex items-center justify-center mt-1 group-hover:scale-110 transition-transform duration-300">
-                                <svg width="16" height="16" viewBox="0 0 12 12" fill="white">
-                                    <path d="M10 3L4.5 8.5L2 6" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                            <p class="text-gray-700 text-base md:text-lg leading-relaxed"><strong class="text-cyan-600 font-semibold">Choose what works:</strong> Curated tool recommendations for your specific needs</p>
-                        </div>
-                        <div class="flex items-start space-x-5">
-                            <div class="flex-shrink-0 w-7 h-7 bg-emerald-500 rounded-full flex items-center justify-center mt-1 group-hover:scale-110 transition-transform duration-300">
-                                <svg width="16" height="16" viewBox="0 0 12 12" fill="white">
-                                    <path d="M10 3L4.5 8.5L2 6" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                            <p class="text-gray-700 text-base md:text-lg leading-relaxed"><strong class="text-emerald-600 font-semibold">Scientist-designed:</strong> Intuitive interfaces built by researchers, for researchers</p>
-                        </div>
-                    </div>
-                </div>
+            <!-- Skilled -->
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+              </svg>
+              <span><strong>Skilled</strong> — Capabilities that execute.</span>
             </div>
-        </div>
-    </section>
+            
+            <!-- Adaptive -->
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/>
+              </svg>
+              <span><strong>Adaptive</strong> — Handles edge cases.</span>
+            </div>
+          </div>
 
-    <!-- Why RafalAi Section -->
-    <section id="why" class="py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-900 via-gray-900 to-slate-800 text-white relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10">
-            <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 30px 30px;"></div>
+          <!-- Closing Line -->
+          <p class="text-xl md:text-2xl text-white/80 italic mt-8">
+            It's not automation you set up once. It's an assistant that knows how to work.
+          </p>
         </div>
-        <div class="relative max-w-4xl mx-auto text-center">
-            <div class="mb-12">
-                <div class="w-24 h-24 glass-dark rounded-3xl flex items-center justify-center mx-auto mb-8 animate-pulse-glow">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-violet-400">
-                        <circle cx="12" cy="12" r="10"/>
-                        <circle cx="12" cy="12" r="6"/>
-                        <circle cx="12" cy="12" r="2"/>
-                    </svg>
-                </div>
-            </div>
-            <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold mb-12 font-space leading-tight">
-                Why <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-cyan-400">RafalAi</span>? 
-                <span class="block mt-6">Because Time Is Your Most <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-400">Valuable Asset</span></span>
-            </h2>
-            <div class="glass-dark rounded-3xl p-10 md:p-16">
-                <p class="text-lg md:text-xl lg:text-2xl leading-relaxed text-gray-200 font-medium max-w-3xl mx-auto">
-                    After 25+ years as a <span class="font-semibold text-cyan-300">Senior Research Scientist, AI Technology Manager, and patent holder</span>, I've seen the same pattern everywhere—from Fortune 500 pharmaceutical labs to NIH collaborations: <span class="font-semibold text-yellow-300">brilliant scientists stuck doing work that machines should handle</span>. RafalAi bridges that gap with tools built by someone who understands both the science and the technology. Get enterprise-grade AI automation without sacrificing your research time to learning curves.
-                </p>
-            </div>
-        </div>
-    </section>
 
-    <!-- Final CTA Section -->
-    <section id="contact" class="relative py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-violet-600 via-purple-600 to-cyan-600 text-white overflow-hidden">
-        <div class="absolute inset-0">
-            <div class="absolute top-10 left-10 w-3 h-3 bg-white/30 rounded-full animate-ping"></div>
-            <div class="absolute top-20 right-20 w-2 h-2 bg-white/40 rounded-full animate-ping" style="animation-delay: 1s;"></div>
-            <div class="absolute bottom-10 left-1/4 w-2 h-2 bg-white/20 rounded-full animate-ping" style="animation-delay: 2s;"></div>
-            <div class="absolute bottom-20 right-1/3 w-1 h-1 bg-white/30 rounded-full animate-ping" style="animation-delay: 3s;"></div>
-        </div>
-        <div class="relative max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold mb-10 leading-tight font-space">
-                Ready to reclaim 10+ hours weekly and 
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-orange-300 to-red-400 animate-shimmer">transform how you work</span>?
-            </h2>
-            <p class="text-lg md:text-xl lg:text-2xl text-blue-100 mb-12 leading-relaxed max-w-3xl mx-auto font-medium">
-                Join scientists and researchers who've already automated their biggest data bottlenecks.
-            </p>
-            <button class="btn-primary text-xl px-12 py-6 animate-pulse-glow" onclick="showModal()">
-                <span class="flex items-center justify-center space-x-3">
-                    <span>Start Saving Time Today</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transform group-hover:translate-x-2 transition-transform duration-300">
-                        <path d="M5 12h14"/>
-                        <path d="m12 5 7 7-7 7"/>
-                    </svg>
-                </span>
-            </button>
-        </div>
-    </section>
+        <!-- Primary CTA -->
+        <a
+          href="#demo"
+          class="inline-block bg-white text-black font-bold text-xl px-12 py-6 rounded-full hover:bg-gray-200 transition-all duration-300 hover:scale-105 shadow-2xl mt-12 animate-pulse-subtle"
+        >
+          See What It Can Do →
+        </a>
 
-    <!-- Enhanced Modal -->
-    <div id="form-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center hidden z-50 transition-all duration-300">
-        <div class="bg-white rounded-3xl p-10 max-w-lg w-full mx-4 relative transform scale-95 transition-all duration-300 shadow-2xl">
-            <button class="absolute top-6 right-6 text-gray-600 hover:text-gray-900 p-2 hover:bg-gray-100 rounded-full transition-colors duration-300" onclick="hideModal()">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M18 6L6 18"/>
-                    <path d="M6 6l12 12"/>
-                </svg>
-            </button>
-            <div class="text-center mb-8">
-                <div class="w-16 h-16 bg-gradient-to-br from-violet-500 to-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-4 animate-glow">
-                    <span class="text-2xl font-bold text-white font-space">R</span>
-                </div>
-                <h3 class="text-3xl font-semibold mb-3 text-gray-900 font-space">Let's Talk About Your Automation Needs</h3>
-                <p class="text-gray-600 text-lg">Tell us about your challenges and we'll show you how RafalAi can help.</p>
-            </div>
-            <form action="https://formspree.io/f/xdkgoqrb" method="POST" class="space-y-6">
-                <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2" for="name">Name</label>
-                    <input type="text" id="name" name="name" class="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all duration-300" required>
-                </div>
-                <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2" for="email">Email</label>
-                    <input type="email" id="email" name="email" class="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all duration-300" required>
-                </div>
-                <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2" for="role">What area interests you most?</label>
-                    <select id="role" name="biggest_time_drain" class="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all duration-300" required>
-                        <option value="">Select one...</option>
-                        <option value="data-analysis">Data analysis & reporting</option>
-                        <option value="research">Research & documentation</option>
-                        <option value="content">Content creation</option>
-                        <option value="admin">Administrative tasks</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2" for="message">What challenges can we help you solve?</label>
-                    <textarea id="message" name="message" rows="4" class="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all duration-300 resize-none" placeholder="Describe your current workflow challenges or what you'd like to automate..." required></textarea>
-                </div>
-                <input type="hidden" name="_subject" value="New RafalAi Consultation Request">
-                <input type="hidden" name="_next" value="./thank-you.html">
-                <button type="submit" class="btn-primary w-full text-lg py-4">
-                    <span class="relative z-10">Get In Touch</span>
-                </button>
-            </form>
+        <!-- Secondary CTA -->
+        <div class="mt-6">
+          <a
+            href="#get-access"
+            class="text-white/70 hover:text-white text-lg underline underline-offset-4 transition"
+          >
+            Get Access
+          </a>
         </div>
+      </div>
     </div>
-
-    <!-- Enhanced Footer -->
-    <footer class="bg-slate-900 text-gray-400 py-16 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                <div class="space-y-4">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-12 h-12 bg-gradient-to-br from-violet-500 to-cyan-500 rounded-xl flex items-center justify-center">
-                            <span class="text-xl font-bold text-white font-space">R</span>
-                        </div>
-                        <span class="text-xl font-bold text-white font-space">RafalAi</span>
-                    </div>
-                    <p class="text-gray-300 leading-7">Turn complex tasks into simple wins with AI automation tools built for professionals.</p>
-                </div>
-                <div>
-                    <h4 class="text-lg font-semibold text-gray-200 mb-6 font-space">Quick Links</h4>
-                    <ul class="space-y-3">
-                        <li><a href="#contact" class="text-gray-400 hover:text-violet-400 transition-colors duration-300">Contact</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-violet-400 transition-colors duration-300">Privacy Policy</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-violet-400 transition-colors duration-300">Terms of Service</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-lg font-semibold text-gray-200 mb-6 font-space">Connect</h4>
-                    <div class="flex space-x-4">
-                        <a href="https://x.com/rafal_ai" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-violet-400 transition-colors duration-300 p-2 hover:bg-gray-800 rounded-lg" title="Follow @rafal_ai on X" aria-label="Follow @rafal_ai on X">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/>
-                            </svg>
-                        </a>
-                        <a href="https://www.linkedin.com/in/rafal-ai-88443035b/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-violet-400 transition-colors duration-300 p-2 hover:bg-gray-800 rounded-lg" title="Connect on LinkedIn" aria-label="Connect on LinkedIn">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                                <rect x="2" y="9" width="4" height="12"/>
-                                <circle cx="4" cy="4" r="2"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="mt-12 pt-8 border-t border-gray-800 text-center">
-                <p class="text-gray-500">© 2025 RafalAi. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="./js/main.js"></script>
+  </div>
 </body>
 </html>
