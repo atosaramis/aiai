@@ -4,148 +4,356 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RafalAI — An AI Assistant That Actually Works</title>
+  <meta name="description" content="RafalAI connects to real data sources and delivers finished work — research briefs, reports, monitoring alerts, and end-to-end workflows.">
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    @keyframes pulse-subtle {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.85; }
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            accent: {
+              DEFAULT: '#60A5FA',   /* blue-400 */
+              dim:    '#3B82F6',    /* blue-500 */
+              glow:   'rgba(96,165,250,0.08)',
+              border: 'rgba(96,165,250,0.15)',
+            }
+          }
+        }
+      }
     }
-    .animate-pulse-subtle {
-      animation: pulse-subtle 2s ease-in-out infinite;
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+
+    /* Subtle CTA glow */
+    @keyframes pulse-subtle {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(96,165,250,0.20); }
+      50% { box-shadow: 0 0 40px 6px rgba(96,165,250,0.08); }
+    }
+    .animate-pulse-subtle { animation: pulse-subtle 3s ease-in-out infinite; }
+
+    /* Fade-in-up entrance */
+    @keyframes fade-in-up {
+      0% { opacity: 0; transform: translateY(24px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .anim-in { animation: fade-in-up 0.7s ease-out forwards; }
+    .d1 { animation-delay: 0.1s; opacity: 0; }
+    .d2 { animation-delay: 0.2s; opacity: 0; }
+    .d3 { animation-delay: 0.35s; opacity: 0; }
+    .d4 { animation-delay: 0.5s; opacity: 0; }
+
+    /* Text shadow for legibility over video */
+    .hero-text { text-shadow: 0 2px 30px rgba(0,0,0,0.6), 0 1px 6px rgba(0,0,0,0.4); }
+
+    /* Radial glow behind section headers */
+    .section-glow {
+      position: relative;
+    }
+    .section-glow::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 500px;
+      height: 300px;
+      background: radial-gradient(ellipse, rgba(96,165,250,0.04) 0%, transparent 70%);
+      pointer-events: none;
     }
   </style>
 </head>
-<body class="bg-black">
-  <div class="relative min-h-screen bg-black overflow-hidden">
-    
+<body class="bg-black text-white antialiased">
+
+  <!-- ================================================================== -->
+  <!-- HERO                                                               -->
+  <!-- ================================================================== -->
+  <div class="relative min-h-screen overflow-hidden">
+
     <!-- Background Video -->
-    <video
-      autoplay
-      loop
-      muted
-      playsinline
+    <video autoplay loop muted playsinline
       class="absolute inset-0 w-full h-full object-cover scale-150 object-left-top origin-top-left"
-    >
-      <source
-        src="https://feedmenews.s3.us-east-1.amazonaws.com/grok-video-4056c621-e2e2-4589-ac1f-883411f4b5ca.mp4"
-        type="video/mp4"
-      />
+      poster="/fallback-dark-abstract.jpg">
+      <source src="https://feedmenews.s3.us-east-1.amazonaws.com/grok-video-4056c621-e2e2-4589-ac1f-883411f4b5ca.mp4" type="video/mp4"/>
     </video>
 
-    <!-- Dark Gradient Overlay -->
-    <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/60 to-black/80"></div>
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/70 to-black"></div>
 
     <!-- Navbar -->
-    <nav class="fixed top-0 inset-x-0 z-50 bg-black/40 backdrop-blur-md border-b border-white/5">
-      <div class="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between h-20">
-        
-        <!-- Logo -->
-        <div class="font-bold text-3xl tracking-tight text-white">
-          R
+    <nav class="fixed top-0 inset-x-0 z-50 bg-black/30 backdrop-blur-md border-b border-white/5">
+      <div class="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between h-16 md:h-20">
+        <a href="#" class="font-bold text-2xl md:text-3xl tracking-tight text-white" aria-label="RafalAI Home">R</a>
+        <div class="hidden md:flex items-center space-x-10 text-sm tracking-wide">
+          <a href="#capabilities" class="text-white/70 hover:text-white transition">Features</a>
+          <a href="#how-it-works" class="text-white/70 hover:text-white transition">How It Works</a>
+          <a href="#connected" class="text-white/70 hover:text-white transition">Sources</a>
         </div>
-
-        <!-- Center Links -->
-        <div class="hidden md:flex items-center space-x-10">
-          <a href="#features" class="flex items-center gap-1 text-white/90 hover:text-white transition">
-            Features
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-            </svg>
-          </a>
-          <a href="#what-it-does" class="text-white/90 hover:text-white transition">
-            What It Does
-          </a>
-          <a href="#difference" class="text-white/90 hover:text-white transition">
-            The Difference
-          </a>
-        </div>
-
-        <!-- Right -->
-        <div class="flex items-center space-x-6">
-          <a href="#signin" class="hidden sm:block text-white/80 hover:text-white transition">
-            Sign in
-          </a>
-          <a href="#get-access" class="bg-white text-black font-semibold px-7 py-3 rounded-full hover:bg-gray-100 transition-transform hover:scale-105 shadow-xl">
-            Get Access
-          </a>
-        </div>
+        <button class="md:hidden text-white p-2" aria-label="Open menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
       </div>
     </nav>
 
-    <!-- Hero Content -->
-    <div class="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 text-center">
-      <div class="max-w-5xl mx-auto">
-        
-        <!-- Top Tag/Pill -->
-        <div class="inline-block backdrop-blur-2xl bg-white/5 border border-white/15 px-6 py-3 rounded-full text-sm md:text-base font-medium tracking-wider uppercase text-white/90 mb-10">
-          An AI Assistant That Actually Works
+    <!-- Hero content -->
+    <div class="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 text-center pt-20 pb-12">
+      <div class="max-w-4xl mx-auto hero-text">
+
+        <!-- Pill -->
+        <div class="inline-block backdrop-blur-xl bg-white/5 border border-accent-border px-5 py-2.5 rounded-full text-xs md:text-sm font-medium tracking-widest uppercase text-accent mb-10 anim-in">
+          AI that connects, executes, and delivers
         </div>
 
-        <!-- Main Headline -->
-        <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extrabold tracking-tight leading-none text-white">
-          Not a Chatbot.<br/>
-          Not a Prompt Box.
+        <!-- Headline -->
+        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] text-white anim-in d1">
+          Not a Chatbot.<br>Not a Prompt Box.
         </h1>
 
         <!-- Sub-headline -->
-        <p class="text-2xl md:text-4xl lg:text-5xl font-bold text-white/95 mt-6">
-          An assistant that gets things done.
+        <p class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium text-white/80 mt-6 max-w-3xl mx-auto leading-snug anim-in d2">
+          An AI assistant wired to real data sources&nbsp;—<br class="hidden md:inline">
+          that ships deliverables, not suggestions.
         </p>
 
-        <!-- Key Differentiator Block -->
-        <div class="max-w-3xl mx-auto mt-10">
-          <div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10 text-white/90 font-medium">
-            
-            <!-- Connected -->
-            <div class="flex items-center gap-2">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
-              </svg>
-              <span><strong>Connected</strong> — Real data. Real APIs.</span>
-            </div>
-            
-            <!-- Skilled -->
-            <div class="flex items-center gap-2">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
-              </svg>
-              <span><strong>Skilled</strong> — Capabilities that execute.</span>
-            </div>
-            
-            <!-- Adaptive -->
-            <div class="flex items-center gap-2">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/>
-              </svg>
-              <span><strong>Adaptive</strong> — Handles edge cases.</span>
-            </div>
+        <!-- Three differentiators -->
+        <div class="flex flex-col md:flex-row items-center justify-center gap-5 md:gap-8 mt-10 text-white/70 text-sm md:text-base anim-in d3">
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4 shrink-0 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+            <span><strong class="text-white">Connected</strong> — PubMed. NewsAPI. SEO tools. Your sources.</span>
           </div>
-
-          <!-- Closing Line -->
-          <p class="text-xl md:text-2xl text-white/80 italic mt-8">
-            It's not automation you set up once. It's an assistant that knows how to work.
-          </p>
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4 shrink-0 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            <span><strong class="text-white">Autonomous</strong> — Data in, deliverable out.</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4 shrink-0 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+            <span><strong class="text-white">Skilled</strong> — Workflows that finish the job.</span>
+          </div>
         </div>
 
-        <!-- Primary CTA -->
-        <a
-          href="#demo"
-          class="inline-block bg-white text-black font-bold text-xl px-12 py-6 rounded-full hover:bg-gray-200 transition-all duration-300 hover:scale-105 shadow-2xl mt-12 animate-pulse-subtle"
-        >
-          See What It Can Do →
-        </a>
-
-        <!-- Secondary CTA -->
-        <div class="mt-6">
-          <a
-            href="#get-access"
-            class="text-white/70 hover:text-white text-lg underline underline-offset-4 transition"
-          >
-            Get Access
+        <!-- CTA -->
+        <div class="mt-12 anim-in d4">
+          <a href="#capabilities" class="inline-block bg-white text-black font-bold text-base md:text-lg px-10 py-4 rounded-full hover:bg-gray-100 transition-all duration-300 hover:scale-105 shadow-2xl animate-pulse-subtle">
+            See What It Can Do →
           </a>
         </div>
       </div>
     </div>
   </div>
+
+
+  <!-- ================================================================== -->
+  <!-- CAPABILITIES                                                       -->
+  <!-- ================================================================== -->
+  <section id="capabilities" class="relative py-28 md:py-36 px-6 bg-gradient-to-b from-black via-[#050a14] to-black">
+    <div class="max-w-6xl mx-auto section-glow">
+
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">You ask. It delivers.</h2>
+        <p class="text-white/55 mt-4 text-lg md:text-xl max-w-2xl mx-auto">Every task follows the same pattern: connect to the right source, run the analysis, deliver the output.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+
+        <!-- Research -->
+        <div class="bg-white/[0.02] border border-white/[0.07] rounded-2xl p-8 hover:border-accent-border hover:bg-accent-glow transition-all duration-300 group">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center">
+              <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            </div>
+            <h3 class="font-bold text-lg">Research &amp; Insights</h3>
+          </div>
+          <p class="text-white/60 text-base leading-relaxed mb-5">
+            Pulls from PubMed, news feeds, and live web sources. Delivers cited briefs&nbsp;— not summaries of summaries.
+          </p>
+          <div class="bg-white/[0.03] rounded-xl p-4">
+            <p class="text-accent/70 text-xs uppercase tracking-wider font-semibold mb-2">Example</p>
+            <p class="text-white/75 italic">"Research mRNA delivery methods from the last 6 months"</p>
+            <p class="text-white/45 mt-2">→ Cited brief with key papers, trends, and gaps identified.</p>
+          </div>
+        </div>
+
+        <!-- Analysis -->
+        <div class="bg-white/[0.02] border border-white/[0.07] rounded-2xl p-8 hover:border-accent-border hover:bg-accent-glow transition-all duration-300 group">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center">
+              <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            </div>
+            <h3 class="font-bold text-lg">Analysis &amp; Reports</h3>
+          </div>
+          <p class="text-white/60 text-base leading-relaxed mb-5">
+            CSV in, charts and narrative out. Finds patterns and builds the report you'd spend hours on.
+          </p>
+          <div class="bg-white/[0.03] rounded-xl p-4">
+            <p class="text-accent/70 text-xs uppercase tracking-wider font-semibold mb-2">Example</p>
+            <p class="text-white/75 italic">"Analyze this sales data and find what's working"</p>
+            <p class="text-white/45 mt-2">→ Charts, correlations, and a written summary ready to share.</p>
+          </div>
+        </div>
+
+        <!-- Monitoring -->
+        <div class="bg-white/[0.02] border border-white/[0.07] rounded-2xl p-8 hover:border-accent-border hover:bg-accent-glow transition-all duration-300 group">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center">
+              <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+            </div>
+            <h3 class="font-bold text-lg">Monitoring &amp; Alerts</h3>
+          </div>
+          <p class="text-white/60 text-base leading-relaxed mb-5">
+            Tracks competitors, FDA updates, and keyword rankings. Pings you when something matters&nbsp;— with context.
+          </p>
+          <div class="bg-white/[0.03] rounded-xl p-4">
+            <p class="text-accent/70 text-xs uppercase tracking-wider font-semibold mb-2">Example</p>
+            <p class="text-white/75 italic">"Monitor these 5 competitors and alert me on news"</p>
+            <p class="text-white/45 mt-2">→ Alerts when they launch, hire, or get press — with a draft response.</p>
+          </div>
+        </div>
+
+        <!-- Workflows -->
+        <div class="bg-white/[0.02] border border-white/[0.07] rounded-2xl p-8 hover:border-accent-border hover:bg-accent-glow transition-all duration-300 group">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center">
+              <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </div>
+            <h3 class="font-bold text-lg">End-to-End Workflows</h3>
+          </div>
+          <p class="text-white/60 text-base leading-relaxed mb-5">
+            From data ingestion to final deliverable. Content briefs, competitive reports, research packages&nbsp;— done.
+          </p>
+          <div class="bg-white/[0.03] rounded-xl p-4">
+            <p class="text-accent/70 text-xs uppercase tracking-wider font-semibold mb-2">Example</p>
+            <p class="text-white/75 italic">"Create a content brief for biotech marketing trends"</p>
+            <p class="text-white/45 mt-2">→ Keyword data, competitor analysis, outline, and writing guidelines.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="text-center text-white/50 text-base mt-14">These aren't integrations coming soon. They work today.</p>
+    </div>
+  </section>
+
+
+  <!-- ================================================================== -->
+  <!-- HOW IT WORKS                                                       -->
+  <!-- ================================================================== -->
+  <section id="how-it-works" class="relative py-28 md:py-36 px-6 bg-gradient-to-b from-black via-[#0a0a0a] to-black">
+    <div class="max-w-4xl mx-auto section-glow">
+
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">Three steps. No setup.</h2>
+        <p class="text-white/55 mt-4 text-lg md:text-xl">No prompt engineering. No plugin configuration. No babysitting.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
+        <!-- Step 1 -->
+        <div>
+          <div class="text-5xl font-bold text-accent/15 mb-4">01</div>
+          <h3 class="font-bold text-lg mb-3">You ask for something specific</h3>
+          <p class="text-white/55 text-base leading-relaxed">"Research the top 10 KOLs in gene therapy and get me their recent publications."</p>
+        </div>
+        <!-- Step 2 -->
+        <div>
+          <div class="text-5xl font-bold text-accent/15 mb-4">02</div>
+          <h3 class="font-bold text-lg mb-3">It figures out the workflow</h3>
+          <p class="text-white/55 text-base leading-relaxed">Which sources to query. What data to pull. How to structure the output. All handled.</p>
+        </div>
+        <!-- Step 3 -->
+        <div>
+          <div class="text-5xl font-bold text-accent/15 mb-4">03</div>
+          <h3 class="font-bold text-lg mb-3">You get a deliverable</h3>
+          <p class="text-white/55 text-base leading-relaxed">Not a chat response. A document. A report. A file you can use and share immediately.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================================== -->
+  <!-- WHAT'S CONNECTED                                                   -->
+  <!-- ================================================================== -->
+  <section id="connected" class="relative py-28 md:py-36 px-6 bg-gradient-to-b from-black via-[#050a14] to-black">
+    <div class="max-w-5xl mx-auto section-glow">
+
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">What's actually connected</h2>
+        <p class="text-white/55 mt-4 text-lg md:text-xl">Real sources. Live today. Not a roadmap.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="bg-white/[0.02] border border-white/[0.07] rounded-xl p-6 hover:border-accent-border transition-all duration-300">
+          <h3 class="font-semibold text-xs uppercase tracking-wider text-accent/60 mb-3">Research</h3>
+          <p class="text-white/75 text-base leading-relaxed">PubMed, bioRxiv, arXiv, Google Scholar</p>
+        </div>
+        <div class="bg-white/[0.02] border border-white/[0.07] rounded-xl p-6 hover:border-accent-border transition-all duration-300">
+          <h3 class="font-semibold text-xs uppercase tracking-wider text-accent/60 mb-3">News &amp; Social</h3>
+          <p class="text-white/75 text-base leading-relaxed">NewsAPI, live web search, X/Twitter monitoring</p>
+        </div>
+        <div class="bg-white/[0.02] border border-white/[0.07] rounded-xl p-6 hover:border-accent-border transition-all duration-300">
+          <h3 class="font-semibold text-xs uppercase tracking-wider text-accent/60 mb-3">SEO &amp; Content</h3>
+          <p class="text-white/75 text-base leading-relaxed">Keyword data, competitor analysis, content optimization</p>
+        </div>
+        <div class="bg-white/[0.02] border border-white/[0.07] rounded-xl p-6 hover:border-accent-border transition-all duration-300">
+          <h3 class="font-semibold text-xs uppercase tracking-wider text-accent/60 mb-3">Regulatory</h3>
+          <p class="text-white/75 text-base leading-relaxed">FDA announcements, clinical trials, guidance documents</p>
+        </div>
+        <div class="bg-white/[0.02] border border-white/[0.07] rounded-xl p-6 hover:border-accent-border transition-all duration-300">
+          <h3 class="font-semibold text-xs uppercase tracking-wider text-accent/60 mb-3">Data &amp; Analysis</h3>
+          <p class="text-white/75 text-base leading-relaxed">CSV processing, visualization, statistical analysis</p>
+        </div>
+        <div class="bg-white/[0.02] border border-white/[0.07] rounded-xl p-6 hover:border-accent-border transition-all duration-300">
+          <h3 class="font-semibold text-xs uppercase tracking-wider text-accent/60 mb-3">Deliverables</h3>
+          <p class="text-white/75 text-base leading-relaxed">Briefs, drafts, email sequences, structured reports</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================================================================== -->
+  <!-- WHO IT'S FOR                                                       -->
+  <!-- ================================================================== -->
+  <section class="relative py-28 md:py-36 px-6 bg-gradient-to-b from-black via-[#0a0a0a] to-black">
+    <div class="max-w-3xl mx-auto text-center section-glow">
+
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6">Built for people who need results,<br class="hidden md:inline"> not another AI to manage.</h2>
+
+      <div class="space-y-6 text-white/65 text-lg md:text-xl text-left max-w-2xl mx-auto mt-12">
+        <p><strong class="text-white">Researchers</strong> who need literature synthesized, not just searched.</p>
+        <p><strong class="text-white">Marketers</strong> who need briefs and reports, not brainstorming sessions.</p>
+        <p><strong class="text-white">Analysts</strong> who need data processed, not tutorials on how to process it.</p>
+      </div>
+
+      <p class="text-white/45 italic mt-14 text-lg md:text-xl">If you've ever thought "why can't it just do the thing"&nbsp;— this is that.</p>
+
+    </div>
+  </section>
+
+
+  <!-- ================================================================== -->
+  <!-- CLOSING                                                            -->
+  <!-- ================================================================== -->
+  <section class="relative py-28 md:py-36 px-6 bg-gradient-to-b from-black via-[#050a14] to-black">
+    <div class="max-w-3xl mx-auto text-center section-glow">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">Stop prompting.<br>Start shipping.</h2>
+      <p class="text-white/50 mt-6 text-lg md:text-xl max-w-xl mx-auto">The sources are connected. The workflows are built. Ask for a deliverable&nbsp;— get a deliverable.</p>
+    </div>
+  </section>
+
+
+  <!-- ================================================================== -->
+  <!-- FOOTER                                                             -->
+  <!-- ================================================================== -->
+  <footer class="bg-black border-t border-white/5 py-10 px-6">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/35">
+      <p>&copy; 2026 RafalAI</p>
+      <div class="flex items-center gap-6">
+        <a href="#" class="hover:text-white/60 transition">Privacy</a>
+        <a href="#" class="hover:text-white/60 transition">Terms</a>
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>
